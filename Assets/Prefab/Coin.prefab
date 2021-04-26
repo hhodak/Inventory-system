@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1943523973894350277}
   - component: {fileID: 1943523973894350276}
   - component: {fileID: 1943523973894350275}
-  - component: {fileID: 1943523973894350278}
+  - component: {fileID: 4559555786877782634}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Item
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943523973894350274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.39, y: -3.14, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,7 +108,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.7, y: 5.7}
   m_EdgeRadius: 0
---- !u!114 &1943523973894350278
+--- !u!114 &4559555786877782634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,10 +117,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1943523973894350274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43e2eac8ad776eb409f489f9d3ae7ea6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f27064df23a9d94699e454a001c10ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
   itemName: Coin
   description: Canadian coin
-  stackSize: 100
+  consumable: 0

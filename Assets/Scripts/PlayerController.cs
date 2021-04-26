@@ -5,7 +5,7 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-    public enum Attributes { Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma }
+    public enum Attributes { Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, HitPoints }
     public Dictionary<Attributes, int> attributes = new Dictionary<Attributes, int>();
     public float speed;
     float horizontalMovement = 0;
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
             GameObject go = Instantiate(collision.gameObject, transform);
             go.SetActive(false);
             inventoryList.Add(go);
+            GameObject.Find("GameManager").GetComponent<GameManager>().FillInventory(inventoryList);
             collision.GetComponent<Item>().Collected();
         }
     }
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     int SetInitialAttributeValue()
     {
-        return UnityEngine.Random.Range(3, 18);
+        return UnityEngine.Random.Range(3, 19);
     }
 
     public void UpdateAttribute(string key, int value)
@@ -77,6 +78,7 @@ public class PlayerController : MonoBehaviour
         {
             text += attr.ToString() + ": " + attributes[attr] + "\n";
         }
+        text = text.Remove(text.Length - 1);
         GameObject.Find("GameManager").GetComponent<GameManager>().UpdatePlayerAttributesText(text);
     }
     #endregion

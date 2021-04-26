@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     bool inventoryOpened = false;
     bool equipmentOpened = false;
     bool attributesOpened = false;
+    List<GameObject> itemList;
 
     void Update()
     {
@@ -103,5 +104,48 @@ public class GameManager : MonoBehaviour
         btnAttribute.SetActive(true);
     }
     #endregion
+
+    public void FillInventory(List<GameObject> list)
+    {
+        itemList = list;
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            GameObject go = itemList[i];
+            CheckItemType(go);
+        }
+    }
+
+    void CheckItemType(GameObject go)
+    {
+        switch (go.GetComponent<Item>().GetType().Name)
+        {
+            case "EquipableItem":
+                GameObject em = GameObject.Find("EquipmentManager");
+                if (em.GetComponent<EquipmentManager>().CheckIfEquipmentSlotTaken(go))
+                {
+                    //Add item to new inventory slot
+                }
+                else
+                {
+                    em.GetComponent<EquipmentManager>().SetEquipment(go);
+                }
+                break;
+            case "NonStackableItem":
+                //Add to new inventory slot
+                break;
+            case "LimitedStackableItem":
+                //Check if the same object exists in inventory
+                //TRUE: Check if it is full
+                ////TRUE: Add to new inventory slot
+                ////FALSE: Add to stack
+                //FALSE: Add to new inventory slot
+                break;
+            case "UnlimitedStackableItem":
+                //Check if the same object exists in inventory
+                //TRUE: Add to stack
+                //FALSE: new inventory slot
+                break;
+        }
+    }
 
 }

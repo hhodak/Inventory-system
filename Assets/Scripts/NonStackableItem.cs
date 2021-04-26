@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NonStackableItem : PickupableItem
+public class NonStackableItem : NonEquipableItem
 {
 
 }
